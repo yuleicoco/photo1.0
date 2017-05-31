@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  rahmen
+
+  Created by czx on 2017/5/27.
+  Copyright © 2017年 yulei. All rights reserved.
+*/
+//tab
+"tabHome" = "HOME";
+"tabDevice" = "DEVICE";
+"tabAccount" = "ACCOUNT";
+
+//login
+"login_Register" = "Register";
+"login_Forget" = "Forgot Password";
+"login_sign" = "Sign in";
+
