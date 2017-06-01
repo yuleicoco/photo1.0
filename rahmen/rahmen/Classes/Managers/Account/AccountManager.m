@@ -44,7 +44,7 @@ singleton_implementation(AccountManager)
 -(void)logout{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    self.loginModel.mid = @"";
+    self.loginModel.userid = @"";
     
     [defaults rm_setCustomObject:self.loginModel forKey:KEY_LOGIN_INFO];
 }
@@ -54,7 +54,7 @@ singleton_implementation(AccountManager)
  */
 -(BOOL)isLogin{
     // return NO;
-    return self.loginModel && self.loginModel.mid && ![self.loginModel.mid isEqualToString:@""];
+    return self.loginModel && self.loginModel.userid && ![self.loginModel.userid isEqualToString:@""];
 }
 
 

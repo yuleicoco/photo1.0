@@ -14,4 +14,14 @@
 "login_Register" = "Register";
 "login_Forget" = "Forgot Password";
 "login_sign" = "Sign in";
+"login_placeholderUsername" = "Username";
+"login_placeholderPassword" = "Password";
+
+
+
+//account
+"account_user" = "Phone number";
+"account_name" = "Name";
+
+
 

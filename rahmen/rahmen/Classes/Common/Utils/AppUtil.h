@@ -24,6 +24,8 @@
 //黄色的字 #f05a28
 #define ZIYELLOW_COLOR RGB(240,90,40)
 
+//placehloder的字 #999999
+#define PLACEHOLDER_COLOR RGB(153,153,153)
 
 
 #undef	NAV_BUTTON_MIN_WIDTH
@@ -51,6 +53,8 @@
 //分页请求个数
 #define REQUEST_PAGE_SIZE           10
 #define START_PAGE_INDEX            1
+
+#define BASE_URL @"http://180.97.80.227:15114"
 
 
 @interface AppUtil : NSObject

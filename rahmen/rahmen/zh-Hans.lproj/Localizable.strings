@@ -14,3 +14,5 @@
 "login_Register" = "注册";
 "login_Forget" = "忘记密码";
 "login_sign" = "登录";
+"login_placeholderUsername" = "手机号码";
+"login_placeholderPassword" = "密码";

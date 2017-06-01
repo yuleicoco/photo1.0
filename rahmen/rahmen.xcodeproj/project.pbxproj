@@ -12,6 +12,23 @@
 		3446D14B1ECEABD00045C8F0 /* rahmen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3446D1491ECEABD00045C8F0 /* rahmen.xcdatamodeld */; };
 		3446D14D1ECEABD10045C8F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3446D14C1ECEABD10045C8F0 /* Assets.xcassets */; };
 		3446D1501ECEABD10045C8F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3446D14E1ECEABD10045C8F0 /* LaunchScreen.storyboard */; };
+		7D121C261EDFF48200CB630A /* ShareWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C251EDFF48200CB630A /* ShareWork.m */; };
+		7D121C291EDFF5C300CB630A /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C281EDFF5C300CB630A /* BaseModel.m */; };
+		7D121C2C1EDFFC2900CB630A /* ShareWork+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C2B1EDFFC2900CB630A /* ShareWork+Login.m */; };
+		7D121C2F1EE0001D00CB630A /* AFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C2E1EE0001D00CB630A /* AFHttpClient.m */; };
+		7D121C321EE001A700CB630A /* AFHttpClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C311EE001A700CB630A /* AFHttpClient+Login.m */; };
+		7D121C351EE00F0700CB630A /* BaseJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C341EE00F0700CB630A /* BaseJSONModel.m */; };
+		7D121C3D1EE017BB00CB630A /* Account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C371EE017BB00CB630A /* Account@2x.png */; };
+		7D121C3E1EE017BB00CB630A /* Accountdian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C381EE017BB00CB630A /* Accountdian@2x.png */; };
+		7D121C3F1EE017BB00CB630A /* devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C391EE017BB00CB630A /* devices@2x.png */; };
+		7D121C401EE017BB00CB630A /* devicesdian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C3A1EE017BB00CB630A /* devicesdian@2x.png */; };
+		7D121C411EE017BB00CB630A /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C3B1EE017BB00CB630A /* home@2x.png */; };
+		7D121C421EE017BB00CB630A /* homedian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C3C1EE017BB00CB630A /* homedian@2x.png */; };
+		7D121C471EE0180B00CB630A /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C431EE0180B00CB630A /* about.png */; };
+		7D121C481EE0180B00CB630A /* Albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C441EE0180B00CB630A /* Albums.png */; };
+		7D121C491EE0180B00CB630A /* name.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C451EE0180B00CB630A /* name.png */; };
+		7D121C4A1EE0180B00CB630A /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D121C461EE0180B00CB630A /* phone.png */; };
+		7D121C511EE01EED00CB630A /* AccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D121C501EE01EED00CB630A /* AccountTableViewCell.m */; };
 		7D426A361ED956FB0043B2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D426A381ED956FB0043B2CC /* Localizable.strings */; };
 		7D426A3C1ED9578C0043B2CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D426A3E1ED9578C0043B2CC /* InfoPlist.strings */; };
 		7DDC5E6B1EDE64D4001877B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5E681EDE64D4001877B5 /* AppDelegate.m */; };
@@ -35,12 +52,6 @@
 		7DDC5EB61EDE6F77001877B5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5EB51EDE6F77001877B5 /* HomeViewController.m */; };
 		7DDC5EB91EDE6F81001877B5 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5EB81EDE6F81001877B5 /* DeviceViewController.m */; };
 		7DDC5EBC1EDE6F8C001877B5 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5EBB1EDE6F8C001877B5 /* AccountViewController.m */; };
-		7DDC5EC41EDE710C001877B5 /* Account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EBE1EDE710C001877B5 /* Account@2x.png */; };
-		7DDC5EC51EDE710C001877B5 /* Accountdian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EBF1EDE710C001877B5 /* Accountdian@2x.png */; };
-		7DDC5EC61EDE710C001877B5 /* devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EC01EDE710C001877B5 /* devices@2x.png */; };
-		7DDC5EC71EDE710C001877B5 /* devicesdian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EC11EDE710C001877B5 /* devicesdian@2x.png */; };
-		7DDC5EC81EDE710C001877B5 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EC21EDE710C001877B5 /* home@2x.png */; };
-		7DDC5EC91EDE710C001877B5 /* homedian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC5EC31EDE710C001877B5 /* homedian@2x.png */; };
 		7DDC5ECC1EDEA5D8001877B5 /* AppDelegate+Launcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5ECB1EDEA5D8001877B5 /* AppDelegate+Launcher.m */; };
 		7DDC5ECF1EDEA776001877B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5ECE1EDEA776001877B5 /* LoginViewController.m */; };
 		7DDC5ED31EDEA80A001877B5 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC5ED21EDEA80A001877B5 /* AccountManager.m */; };
@@ -65,6 +76,30 @@
 		3446D14F1ECEABD10045C8F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3446D1511ECEABD10045C8F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66ABD8111A8E8F2D3FBF14B1 /* Pods-rahmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rahmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rahmen/Pods-rahmen.debug.xcconfig"; sourceTree = "<group>"; };
+		7D121C241EDFF48200CB630A /* ShareWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWork.h; sourceTree = "<group>"; };
+		7D121C251EDFF48200CB630A /* ShareWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWork.m; sourceTree = "<group>"; };
+		7D121C271EDFF5C300CB630A /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		7D121C281EDFF5C300CB630A /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		7D121C2A1EDFFC2900CB630A /* ShareWork+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShareWork+Login.h"; sourceTree = "<group>"; };
+		7D121C2B1EDFFC2900CB630A /* ShareWork+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShareWork+Login.m"; sourceTree = "<group>"; };
+		7D121C2D1EE0001D00CB630A /* AFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpClient.h; sourceTree = "<group>"; };
+		7D121C2E1EE0001D00CB630A /* AFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpClient.m; sourceTree = "<group>"; };
+		7D121C301EE001A700CB630A /* AFHttpClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHttpClient+Login.h"; sourceTree = "<group>"; };
+		7D121C311EE001A700CB630A /* AFHttpClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHttpClient+Login.m"; sourceTree = "<group>"; };
+		7D121C331EE00F0700CB630A /* BaseJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseJSONModel.h; sourceTree = "<group>"; };
+		7D121C341EE00F0700CB630A /* BaseJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseJSONModel.m; sourceTree = "<group>"; };
+		7D121C371EE017BB00CB630A /* Account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Account@2x.png"; sourceTree = "<group>"; };
+		7D121C381EE017BB00CB630A /* Accountdian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Accountdian@2x.png"; sourceTree = "<group>"; };
+		7D121C391EE017BB00CB630A /* devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices@2x.png"; sourceTree = "<group>"; };
+		7D121C3A1EE017BB00CB630A /* devicesdian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devicesdian@2x.png"; sourceTree = "<group>"; };
+		7D121C3B1EE017BB00CB630A /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		7D121C3C1EE017BB00CB630A /* homedian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homedian@2x.png"; sourceTree = "<group>"; };
+		7D121C431EE0180B00CB630A /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		7D121C441EE0180B00CB630A /* Albums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Albums.png; sourceTree = "<group>"; };
+		7D121C451EE0180B00CB630A /* name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name.png; sourceTree = "<group>"; };
+		7D121C461EE0180B00CB630A /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		7D121C4F1EE01EED00CB630A /* AccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewCell.h; sourceTree = "<group>"; };
+		7D121C501EE01EED00CB630A /* AccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewCell.m; sourceTree = "<group>"; };
 		7D426A2C1ED955680043B2CC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7D426A2D1ED955680043B2CC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7D426A371ED956FB0043B2CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -116,12 +151,6 @@
 		7DDC5EB81EDE6F81001877B5 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
 		7DDC5EBA1EDE6F8C001877B5 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		7DDC5EBB1EDE6F8C001877B5 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		7DDC5EBE1EDE710C001877B5 /* Account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Account@2x.png"; sourceTree = "<group>"; };
-		7DDC5EBF1EDE710C001877B5 /* Accountdian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Accountdian@2x.png"; sourceTree = "<group>"; };
-		7DDC5EC01EDE710C001877B5 /* devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices@2x.png"; sourceTree = "<group>"; };
-		7DDC5EC11EDE710C001877B5 /* devicesdian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devicesdian@2x.png"; sourceTree = "<group>"; };
-		7DDC5EC21EDE710C001877B5 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
-		7DDC5EC31EDE710C001877B5 /* homedian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homedian@2x.png"; sourceTree = "<group>"; };
 		7DDC5ECA1EDEA5D8001877B5 /* AppDelegate+Launcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Launcher.h"; sourceTree = "<group>"; };
 		7DDC5ECB1EDEA5D8001877B5 /* AppDelegate+Launcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Launcher.m"; sourceTree = "<group>"; };
 		7DDC5ECD1EDEA776001877B5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -208,6 +237,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7D121C361EE017BB00CB630A /* tab */ = {
+			isa = PBXGroup;
+			children = (
+				7D121C371EE017BB00CB630A /* Account@2x.png */,
+				7D121C381EE017BB00CB630A /* Accountdian@2x.png */,
+				7D121C391EE017BB00CB630A /* devices@2x.png */,
+				7D121C3A1EE017BB00CB630A /* devicesdian@2x.png */,
+				7D121C3B1EE017BB00CB630A /* home@2x.png */,
+				7D121C3C1EE017BB00CB630A /* homedian@2x.png */,
+			);
+			path = tab;
+			sourceTree = "<group>";
+		};
+		7D121C4E1EE01EED00CB630A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D121C4F1EE01EED00CB630A /* AccountTableViewCell.h */,
+				7D121C501EE01EED00CB630A /* AccountTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7DDC5E591EDE63F2001877B5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +283,10 @@
 		7DDC5E611EDE64D4001877B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7D121C331EE00F0700CB630A /* BaseJSONModel.h */,
+				7D121C341EE00F0700CB630A /* BaseJSONModel.m */,
+				7D121C271EDFF5C300CB630A /* BaseModel.h */,
+				7D121C281EDFF5C300CB630A /* BaseModel.m */,
 				7DDC5ED41EDEA88E001877B5 /* LoginModel.h */,
 				7DDC5ED51EDEA88E001877B5 /* LoginModel.m */,
 			);
@@ -262,6 +317,14 @@
 		7DDC5E641EDE64D4001877B5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7D121C2D1EE0001D00CB630A /* AFHttpClient.h */,
+				7D121C2E1EE0001D00CB630A /* AFHttpClient.m */,
+				7D121C301EE001A700CB630A /* AFHttpClient+Login.h */,
+				7D121C311EE001A700CB630A /* AFHttpClient+Login.m */,
+				7D121C241EDFF48200CB630A /* ShareWork.h */,
+				7D121C251EDFF48200CB630A /* ShareWork.m */,
+				7D121C2A1EDFFC2900CB630A /* ShareWork+Login.h */,
+				7D121C2B1EDFFC2900CB630A /* ShareWork+Login.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -291,6 +354,7 @@
 		7DDC5E6D1EDE678B001877B5 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				7D121C4E1EE01EED00CB630A /* Views */,
 				7DDC5EBA1EDE6F8C001877B5 /* AccountViewController.h */,
 				7DDC5EBB1EDE6F8C001877B5 /* AccountViewController.m */,
 			);
@@ -447,6 +511,7 @@
 		7DDC5EBD1EDE7031001877B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D121C361EE017BB00CB630A /* tab */,
 				7DDC5EE01EDED6E6001877B5 /* E-mail.png */,
 				7DDC5EE11EDED6E6001877B5 /* logincode.png */,
 				7DDC5EE21EDED6E6001877B5 /* password.png */,
@@ -454,12 +519,10 @@
 				7DDC5EDE1EDEC6CD001877B5 /* huangzi.png */,
 				7DDC5EDC1EDEBEAE001877B5 /* whitezi.png */,
 				7DDC5ED71EDEA970001877B5 /* launche@2x.png */,
-				7DDC5EBE1EDE710C001877B5 /* Account@2x.png */,
-				7DDC5EBF1EDE710C001877B5 /* Accountdian@2x.png */,
-				7DDC5EC01EDE710C001877B5 /* devices@2x.png */,
-				7DDC5EC11EDE710C001877B5 /* devicesdian@2x.png */,
-				7DDC5EC21EDE710C001877B5 /* home@2x.png */,
-				7DDC5EC31EDE710C001877B5 /* homedian@2x.png */,
+				7D121C431EE0180B00CB630A /* about.png */,
+				7D121C441EE0180B00CB630A /* Albums.png */,
+				7D121C451EE0180B00CB630A /* name.png */,
+				7D121C461EE0180B00CB630A /* phone.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -543,24 +606,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DDC5EC71EDE710C001877B5 /* devicesdian@2x.png in Resources */,
-				7DDC5EC51EDE710C001877B5 /* Accountdian@2x.png in Resources */,
 				7DDC5EE41EDED6E6001877B5 /* E-mail.png in Resources */,
 				7DDC5EE61EDED6E6001877B5 /* password.png in Resources */,
-				7DDC5EC61EDE710C001877B5 /* devices@2x.png in Resources */,
 				7DDC5EE51EDED6E6001877B5 /* logincode.png in Resources */,
 				7D426A361ED956FB0043B2CC /* Localizable.strings in Resources */,
-				7DDC5EC41EDE710C001877B5 /* Account@2x.png in Resources */,
 				3446D1501ECEABD10045C8F0 /* LaunchScreen.storyboard in Resources */,
-				7DDC5EC81EDE710C001877B5 /* home@2x.png in Resources */,
+				7D121C421EE017BB00CB630A /* homedian@2x.png in Resources */,
 				3446D14D1ECEABD10045C8F0 /* Assets.xcassets in Resources */,
-				7DDC5EC91EDE710C001877B5 /* homedian@2x.png in Resources */,
 				3446D1481ECEABD00045C8F0 /* Main.storyboard in Resources */,
 				7DDC5EDF1EDEC6CD001877B5 /* huangzi.png in Resources */,
 				7DDC5ED81EDEA970001877B5 /* launche@2x.png in Resources */,
 				7DDC5EE71EDED6E6001877B5 /* username.png in Resources */,
+				7D121C3F1EE017BB00CB630A /* devices@2x.png in Resources */,
+				7D121C4A1EE0180B00CB630A /* phone.png in Resources */,
+				7D121C3E1EE017BB00CB630A /* Accountdian@2x.png in Resources */,
+				7D121C481EE0180B00CB630A /* Albums.png in Resources */,
 				7D426A3C1ED9578C0043B2CC /* InfoPlist.strings in Resources */,
+				7D121C471EE0180B00CB630A /* about.png in Resources */,
 				7DDC5EDD1EDEBEAE001877B5 /* whitezi.png in Resources */,
+				7D121C411EE017BB00CB630A /* home@2x.png in Resources */,
+				7D121C401EE017BB00CB630A /* devicesdian@2x.png in Resources */,
+				7D121C3D1EE017BB00CB630A /* Account@2x.png in Resources */,
+				7D121C491EE0180B00CB630A /* name.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +692,7 @@
 				7DDC5EA91EDE6AC6001877B5 /* UIImage-Extensions.m in Sources */,
 				3446D14B1ECEABD00045C8F0 /* rahmen.xcdatamodeld in Sources */,
 				7DDC5EA51EDE6AC6001877B5 /* QFTableView.m in Sources */,
+				7D121C511EE01EED00CB630A /* AccountTableViewCell.m in Sources */,
 				7DDC5EAB1EDE6AC6001877B5 /* UIView+TapBlocks.m in Sources */,
 				7DDC5EB01EDE6AC7001877B5 /* NSTimer+Addition.m in Sources */,
 				3446D13F1ECEABD00045C8F0 /* main.m in Sources */,
@@ -633,14 +701,20 @@
 				7DDC5EAD1EDE6AC7001877B5 /* AppUtil.m in Sources */,
 				7DDC5ED61EDEA88E001877B5 /* LoginModel.m in Sources */,
 				7DDC5EAF1EDE6AC7001877B5 /* CycleScrollView.m in Sources */,
+				7D121C261EDFF48200CB630A /* ShareWork.m in Sources */,
+				7D121C2F1EE0001D00CB630A /* AFHttpClient.m in Sources */,
+				7D121C351EE00F0700CB630A /* BaseJSONModel.m in Sources */,
 				7DDC5ECC1EDEA5D8001877B5 /* AppDelegate+Launcher.m in Sources */,
 				7DDC5EAE1EDE6AC7001877B5 /* Reachability.m in Sources */,
 				7DDC5EA81EDE6AC6001877B5 /* UIButton+Blocks.m in Sources */,
+				7D121C291EDFF5C300CB630A /* BaseModel.m in Sources */,
 				7DDC5ED31EDEA80A001877B5 /* AccountManager.m in Sources */,
+				7D121C321EE001A700CB630A /* AFHttpClient+Login.m in Sources */,
 				7DDC5EB91EDE6F81001877B5 /* DeviceViewController.m in Sources */,
 				7DDC5E6B1EDE64D4001877B5 /* AppDelegate.m in Sources */,
 				7DDC5EA61EDE6AC6001877B5 /* UIActionSheet+Blocks.m in Sources */,
 				7DDC5EBC1EDE6F8C001877B5 /* AccountViewController.m in Sources */,
+				7D121C2C1EDFFC2900CB630A /* ShareWork+Login.m in Sources */,
 				7DDC5E7B1EDE6A52001877B5 /* PopStartView.m in Sources */,
 				7DDC5EA71EDE6AC6001877B5 /* UIAlertView+Blocks.m in Sources */,
 				7DDC5E7D1EDE6A52001877B5 /* BaseViewController.m in Sources */,

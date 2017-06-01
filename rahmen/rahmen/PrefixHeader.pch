@@ -25,6 +25,9 @@
 #import "IQKeyboardManager.h"
 #import "Notification.h"
 #import "AccountManager.h"
+#import "UIViewController+HUD.h"
+#import <JSONModel.h>
+
 
 
 #endif /* PrefixHeader_pch */
