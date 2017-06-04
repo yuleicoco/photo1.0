@@ -31,7 +31,8 @@
     
     
    // self.navigationController.navigationBar.barTintColor = RGB(245, 145, 40);
-   
+    
+  
    
     
     [self setupData];
@@ -51,6 +52,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    NSArray *array = self.navigationController.viewControllers;
+
+    if (array.count > 1) {
+     //   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.f) {
+            self.edgesForExtendedLayout = UIRectEdgeAll;
+       // }
+    }else{
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    }
     [self setLeftBackButton];
     [self isfriendmessage];
     
@@ -109,7 +121,7 @@
     self.navigationItem.backBarButtonItem= nil;
     if (array.count > 1) {
         UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftbutton.frame = CGRectMake(0, 0, 30, 30);
+        leftbutton.frame = CGRectMake(0, 0, 15, 30);
         [leftbutton setTitleEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
         [leftbutton setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
         
@@ -178,6 +190,20 @@
     
     self.navigationItem.titleView = titleView;
 }
+
+-(void)setTitieViewImage{
+    UIImageView * titleImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 136, 20)];
+    titleImage.image = [UIImage imageNamed:@"whitezi.png"];
+    titleImage.contentMode = UIViewContentModeScaleAspectFit;
+
+    [self setTitleView:titleImage];
+
+
+}
+
+
+
+
 
 -(void) setNavTitle:(NSString*) navTitle{
     

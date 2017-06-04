@@ -9,6 +9,9 @@
 #import <AFNetworking/AFNetworking.h>
 
 #import "BaseModel.h"
+#import "FamilyquanModel.h"
+#import "CommentModel.h"
+#import "NewAlbumModel.h"
 
 @interface AFHttpClient : AFHTTPSessionManager
 

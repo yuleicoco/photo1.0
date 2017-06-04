@@ -42,6 +42,31 @@
             make.centerY.equalTo(_nameLabel.superview.mas_centerY);
         }];
         
+        _rightLabel = [[UILabel alloc]init];
+        _rightLabel.textColor = [UIColor blackColor];
+        _rightLabel.font = [UIFont systemFontOfSize:17.5];
+       // _rightLabel.text = @"dadad";
+        [self addSubview:_rightLabel];
+        [_rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_rightLabel.superview.mas_right).offset(-16);
+            make.centerY.equalTo(_rightLabel.superview.mas_centerY);
+
+        }];
+        
+        _rightImage = [[UIImageView alloc]init];
+        _rightImage.image = [UIImage imageNamed:@"rightjiantou.png"];
+        [self addSubview:_rightImage];
+        [_rightImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(6);
+            make.height.mas_equalTo(11);
+            make.right.equalTo(_rightImage.superview.mas_right).offset(-16);
+            make.centerY.equalTo(_rightImage.superview.mas_centerY);
+            
+            
+        }];
+        
+        
+        
         
         
         
@@ -53,6 +78,9 @@
 
     return self;
 }
+
+
+
 
 
 

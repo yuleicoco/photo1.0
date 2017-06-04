@@ -8,6 +8,7 @@
 
 #import "AccountViewController.h"
 #import "AccountTableViewCell.h"
+#import "AboutViewController.h"
 
 static NSString * cellId = @"accounttablvewCellid";
 @interface AccountViewController ()
@@ -85,7 +86,7 @@ static NSString * cellId = @"accounttablvewCellid";
 -(void)setupData{
     [super setupData];
     _imageArry = @[@"phone.png",@"name.png",@"Albums.png",@"password.png",@"about.png"];
-    _nameArray = @[@"dada",@"1232",@"czcz",@"44",@"adad"];
+    _nameArray = @[NSLocalizedString(@"account_user", nil),NSLocalizedString(@"account_name", nil),NSLocalizedString(@"account_album", nil),NSLocalizedString(@"account_password", nil),NSLocalizedString(@"account_about", nil)];
     
     
 }
@@ -117,13 +118,54 @@ static NSString * cellId = @"accounttablvewCellid";
     if (indexPath.row == 0) {
         cell.lineLabel.hidden = YES;
     }
+    if (indexPath.row == 0 ) {
+        cell.rightLabel.text = [AccountManager sharedAccountManager].loginModel.phone;
+    }
+    if (indexPath.row == 1) {
+        cell.rightLabel.text = [AccountManager sharedAccountManager].loginModel.nickname;
+    }
     
-    
+    if (indexPath.row>=2) {
+        cell.rightImage.hidden = NO;
+    }else{
+        cell.rightImage.hidden = YES;
+    }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        
+    }
+    if (indexPath.row == 1) {
+        NSLog(@"改名字");
+    }
+    if (indexPath.row == 2) {
+        NSLog(@"相册");
+    }
+    if (indexPath.row == 3) {
+        NSLog(@"改密码");
+    }
+    if (indexPath.row == 4) {
+        NSLog(@"关于");
+        AboutViewController  * aboutVc =[[AboutViewController alloc]init];
+        [self.navigationController pushViewController:aboutVc animated:NO];
+    }
+
+
+}
+
+
+
+
+
+
+
+
 
 
 @end

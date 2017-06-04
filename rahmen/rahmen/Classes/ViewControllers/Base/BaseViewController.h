@@ -37,6 +37,8 @@ typedef enum
 
 - (void)setTitleView:(UIView *)titleView;
 
+-(void)setTitieViewImage;
+
 - (void)doLeftButtonTouch;
 
 - (void)doRightButtonTouch;

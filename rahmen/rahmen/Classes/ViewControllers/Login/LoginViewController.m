@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "AFHttpClient+Login.h"
 #import "LoginModel.h"
+#import "RegistViewController.h"
+#import "ForgetpasswordViewController.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong)UITextField * usernameTextfield;
@@ -129,6 +131,7 @@
     [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(ReLabel);
         make.left.equalTo(ReLabel);
+        make.top.equalTo(ReLabel);
     }];
     
     UILabel * forgetLabel = [[UILabel alloc]init];
@@ -149,6 +152,7 @@
     [forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(forgetLabel);
         make.left.equalTo(forgetLabel);
+        make.top.equalTo(forgetLabel);
         
     }];
     
@@ -178,11 +182,16 @@
 #pragma mark -- 注册
 -(void)registerBtnTouch{
     //注册按钮点击
+    RegistViewController * reVc = [[RegistViewController alloc]init];
+    [self.navigationController pushViewController:reVc animated:NO];
 
 }
 #pragma mark -- 忘记密码
 -(void)forgetBtnTouch{
     // 忘记密码按钮点击
+    ForgetpasswordViewController * forgetVc = [[ForgetpasswordViewController alloc]init];
+    [self.navigationController pushViewController:forgetVc animated:NO];
+    
 
 }
 #pragma mark -- 登录
