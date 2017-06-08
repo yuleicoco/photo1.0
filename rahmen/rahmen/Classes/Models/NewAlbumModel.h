@@ -17,6 +17,6 @@
 @property (nonatomic,strong)NSString * photonum;
 @property (nonatomic,strong)NSString * userid;
 
-
+@property (nonatomic,strong)NSArray * aidArray;
 
 @end

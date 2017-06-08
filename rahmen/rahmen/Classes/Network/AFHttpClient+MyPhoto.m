@@ -13,7 +13,7 @@
 
 
 
--(void)QueryMyPhoto:(NSString *)userid token:(NSString *)token complete:(void (^)(BaseModel *))completeBlock
+-(void)QueryMyPhoto:(NSString *)userid token:(NSString *)token complete:(void (^)(BaseModel * model))completeBlock
 {
     NSMutableDictionary * parms = [[NSMutableDictionary alloc]init];
     parms[@"userid"] = userid;
@@ -36,7 +36,7 @@
     
 }
 
--(void)QueryMyPhotos:(NSString *)userid token:(NSString *)token did:(NSString *)did page:(NSString *)page complete:(void (^)(BaseModel *))completeBlock
+-(void)QueryMyPhotos:(NSString *)userid token:(NSString *)token did:(NSString *)did page:(NSString * )page complete:(void (^)(BaseModel * model))completeBlock
 {
     
     
@@ -51,16 +51,22 @@
     parms[@"data"] =dataparms;
     
     [self POST:@"sebot/moblie/forward" parameters:parms result:^(BaseModel * model) {
-         model.list = [PhotoModel arrayOfModelsFromDictionaries:model.list];
+        
+     model.list = [PhotoGrapgModel arrayOfModelsFromDictionaries:model.list];
+        
         if (model) {
             completeBlock(model);
         }
         
     }];
     
+
+    
+    
+    
 }
 
--(void)Deletephoto:(NSString *)userid token:(NSString *)token pids:(NSString *)pids complete:(void (^)(BaseModel *))completeBlock
+-(void)Deletephoto:(NSString *)userid token:(NSString *)token pids:(NSString *)pids complete:(void (^)(BaseModel * model))completeBlock
 {
     
     NSMutableDictionary * parms = [[NSMutableDictionary alloc]init];

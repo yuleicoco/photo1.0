@@ -15,6 +15,8 @@
     if (self) {
         _firstImage = [[UIImageView alloc]init];
         _firstImage.backgroundColor = [UIColor blackColor];
+        _firstImage.layer.borderWidth = 1;
+        _firstImage.layer.borderColor = [UIColor whiteColor].CGColor;
         [self addSubview:_firstImage];
         [_firstImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_firstImage.superview.mas_left).offset(17);
@@ -26,10 +28,12 @@
         
         _secoendImage = [[UIImageView alloc]init];
         _secoendImage.backgroundColor = [UIColor redColor];
+        _secoendImage.layer.borderWidth = 1;
+        _secoendImage.layer.borderColor  = [UIColor whiteColor].CGColor;
         [self addSubview:_secoendImage];
         [_secoendImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_secoendImage.superview.mas_left).offset(16);
-            make.top.equalTo(_secoendImage.superview.mas_top).offset(11);
+            make.left.equalTo(_secoendImage.superview.mas_left).offset(15);
+            make.top.equalTo(_secoendImage.superview.mas_top).offset(10);
             make.width.height.mas_equalTo(43);
             
         }];
@@ -45,7 +49,16 @@
         }];
         
         _nameLabel = [[UILabel alloc]init];
-       // _nameLabel
+        _nameLabel.textColor = [UIColor blackColor];
+        _nameLabel.font = [UIFont systemFontOfSize:17.5];
+        [self addSubview:_nameLabel];
+        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_firstImage.mas_right).offset(11);
+            make.centerY.equalTo(_nameLabel.superview);
+            
+            
+            
+        }];
         
         
         

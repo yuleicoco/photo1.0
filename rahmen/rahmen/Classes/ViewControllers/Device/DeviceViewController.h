@@ -6,8 +6,8 @@
 //  Copyright © 2017年 yulei. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTabViewController.h"
 
-@interface DeviceViewController : BaseViewController
+@interface DeviceViewController : BaseTabViewController
 
 @end

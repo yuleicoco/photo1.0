@@ -16,22 +16,61 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setNavTitle:@"Devices"];
+    self.view.backgroundColor =BACKGRAY_COLOR;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setupView{
+    [super setupView];
+    UIView * topView = [[UIView alloc]init];
+    topView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:topView];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(topView.superview);
+        make.height.mas_equalTo(10.5);
+    }];
+    
+    UIView * receivedView = [[UIView alloc]init];
+    receivedView.backgroundColor = [UIColor blackColor];
+    [topView addSubview:receivedView];
+    [receivedView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(topView.superview);
+        make.height.mas_equalTo(50);
+    }];
+    
+//    UILabel * lineLabel = [[UILabel alloc]init];
+//    lineLabel.backgroundColor = FENLINE_COLOR;
+//    [topView addSubview:lineLabel];
+//    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(lineLabel.superview.mas_left).offset(16);
+//        make.right.equalTo(lineLabel.superview.mas_right).offset(-16);
+//        make.centerY.equalTo(lineLabel.superview.mas_centerY);
+//        make.height.mas_equalTo(0.5);
+//    }];
+    
+    
+    
+    
+    
+    
+    
+    
+
+}
+-(void)setupData{
+    [super setupData];
+
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
+
+
+
+
+
+
 
 @end

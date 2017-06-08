@@ -12,7 +12,8 @@
 #import "FamilyquanModel.h"
 #import "CommentModel.h"
 #import "NewAlbumModel.h"
-
+#import "NewAlbumAdviceModel.h"
+#import "PhotoGrapgModel.h"
 @interface AFHttpClient : AFHTTPSessionManager
 
 singleton_interface(AFHttpClient)

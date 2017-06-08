@@ -9,6 +9,7 @@
 #import "AccountViewController.h"
 #import "AccountTableViewCell.h"
 #import "AboutViewController.h"
+#import "NewPhotoalbumViewController.h"
 
 static NSString * cellId = @"accounttablvewCellid";
 @interface AccountViewController ()
@@ -146,6 +147,8 @@ static NSString * cellId = @"accounttablvewCellid";
     }
     if (indexPath.row == 2) {
         NSLog(@"相册");
+        NewPhotoalbumViewController * photo = [[NewPhotoalbumViewController alloc]init];
+        [self.navigationController pushViewController:photo animated:NO];
     }
     if (indexPath.row == 3) {
         NSLog(@"改密码");

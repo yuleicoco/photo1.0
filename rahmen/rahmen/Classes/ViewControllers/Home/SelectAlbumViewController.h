@@ -9,5 +9,6 @@
 #import "BaseTabViewController.h"
 
 @interface SelectAlbumViewController : BaseTabViewController
+@property (nonatomic,strong)NSMutableArray * choseeImage;
 
 @end

@@ -14,7 +14,7 @@
 /**
  *  查询我的相册
  */
--(void)QueryMyPhoto:(NSString *)userid token:(NSString *)token complete:(void (^)(BaseModel *))completeBlock;
+-(void)QueryMyPhoto:(NSString *)userid token:(NSString *)token complete:(void (^)(BaseModel * model))completeBlock;
 
 
 
@@ -23,12 +23,12 @@
  */
 
 
--(void)QueryMyPhotos:(NSString *)userid token:(NSString *)token did:(NSString *)did page:(NSString *)page complete:(void (^)(BaseModel *))completeBlock;
+-(void)QueryMyPhotos:(NSString *)userid token:(NSString *)token did:(NSString *)did page:(NSString * )page complete:(void (^)(BaseModel * model))completeBlock;
 
 
 /**
  *  删除照片
  */
 
--(void)Deletephoto:(NSString *)userid token:(NSString *)token pids:(NSString *)pids complete:(void (^)(BaseModel *))completeBlock;
+-(void)Deletephoto:(NSString *)userid token:(NSString *)token pids:(NSString *)pids complete:(void (^)(BaseModel * model))completeBlock;
 @end

@@ -166,6 +166,7 @@
     }
     button = [[UIButton alloc] initWithFrame:buttonFrame];
     button.hidden = hide;
+    button.imageEdgeInsets = UIEdgeInsetsMake(-1, 20, 0, 0);
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.backgroundColor = [UIColor clearColor];
     [button setImage:image forState:UIControlStateNormal];

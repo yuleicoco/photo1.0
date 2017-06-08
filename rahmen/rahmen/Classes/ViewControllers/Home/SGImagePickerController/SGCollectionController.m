@@ -30,6 +30,9 @@
 @property (nonatomic,strong) NSMutableArray *selectedModels;
 //选中的图片
 @property (nonatomic,strong) NSMutableArray *selectedImages;
+
+//底部button
+@property (nonatomic,strong)UIButton * doneBtn;
 @end
 
 @implementation SGCollectionController
@@ -96,14 +99,29 @@ static NSString * const reuseIdentifier = @"Cell";
     //右侧完成按钮
 //    UIBarButtonItem *finish = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(finishSelecting)];
 //    self.navigationItem.rightBarButtonItem = finish;
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(0, 0, 80, 30);
-    [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -18)];
-   // [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
-    [rightBtn setTitle:@"Select" forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(finishSelecting) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtn setTitleColor:ZIYELLOW_COLOR forState:UIControlStateNormal];
-     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.frame = CGRectMake(0, 0, 80, 30);
+//    [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -18)];
+//   // [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(-1, -18, 0, 0)];
+//    [rightBtn setTitle:@"Select" forState:UIControlStateNormal];
+//    [rightBtn addTarget:self action:@selector(finishSelecting) forControlEvents:UIControlEventTouchUpInside];
+//    [rightBtn setTitleColor:ZIYELLOW_COLOR forState:UIControlStateNormal];
+//     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    _doneBtn = [[UIButton alloc]init];
+    _doneBtn.backgroundColor = RGB(201, 201, 201);
+    [_doneBtn setTitle:@"Done" forState:UIControlStateNormal];
+    [_doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _doneBtn.titleLabel.font = [UIFont systemFontOfSize:17.5];
+    [_doneBtn addTarget:self action:@selector(finishSelecting) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_doneBtn];
+    [_doneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(_doneBtn.superview);
+        make.height.mas_equalTo(49);
+        
+    }];
+    
+    
     
     
 }
@@ -115,7 +133,6 @@ static NSString * const reuseIdentifier = @"Cell";
 //出口,选择完成图片
 - (void)finishSelecting{
     if (self.maxCount==4) {
-        [[AppUtil appTopViewController]showHint:@"你还没有选择图片"];
         return;
     }
     
@@ -178,7 +195,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [selectButton setImage:[UIImage imageNamed:@"red_normal.png"] forState:UIControlStateNormal];
         [selectButton setImage:[UIImage imageNamed:@"red_seleted.png"] forState:UIControlStateSelected];
         CGFloat width = cell.bounds.size.width;
-        selectButton.frame = CGRectMake(width - 22, 2, 20, 20);
+        selectButton.frame = CGRectMake(width - 27, 2, 25, 25);
         [cell.contentView addSubview:selectButton];
         cell.selectedButton = selectButton;
         [selectButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -204,7 +221,27 @@ static NSString * const reuseIdentifier = @"Cell";
         model.isSelected = NO;
         self.maxCount++;
     }
+    
+    NSInteger i = 4 - self.maxCount;
+    if ( i > 0) {
+        _doneBtn.backgroundColor = ZIYELLOW_COLOR;
+        [_doneBtn setTitle:[NSString stringWithFormat:@"Done%ld/%d",i,4] forState:UIControlStateNormal];
+    }else{
+        _doneBtn.backgroundColor = RGB(201, 201, 201);
+        [_doneBtn setTitle:@"Done"forState:UIControlStateNormal];
+        
+    }
+    
+ 
 }
+
+
+
+
+
+
+
+
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

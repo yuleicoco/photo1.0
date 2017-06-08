@@ -40,7 +40,7 @@
 {
     [super setupView];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    mytableView = [[QFTableView alloc] initWithFrame:CGRectMake(0, 60 * W_Hight_Zoom, 375* W_Wide_Zoom, MainScreen.height)];
+    mytableView = [[QFTableView alloc] initWithFrame:CGRectMake(0, 0 * W_Hight_Zoom, 375* W_Wide_Zoom, MainScreen.height)];
     mytableView.delegate   = self;
     mytableView.dataSource = self;
     mytableView.backgroundColor =[UIColor blackColor];

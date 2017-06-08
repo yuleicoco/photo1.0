@@ -68,9 +68,9 @@ static NSString * cellId = @"homeviewcellId";
 
 #pragma mark -- 发布按钮点击
 -(void)pushjianbtnTouch{
-    SelectAlbumViewController * selectVc = [[SelectAlbumViewController alloc]init];
-    [self.navigationController pushViewController:selectVc animated:NO];
-    return;
+//    SelectAlbumViewController * selectVc = [[SelectAlbumViewController alloc]init];
+//    [self.navigationController pushViewController:selectVc animated:NO];
+//    return;
     
     _pushjiaBtn.hidden = YES;
     _bigBtn = [[UIButton alloc]initWithFrame:self.view.frame];
@@ -163,7 +163,10 @@ static NSString * cellId = @"homeviewcellId";
 //        issue.aidstr = _aidStr;
 //        issue.choseeImage = images;
 //        [self.navigationController pushViewController:issue animated:NO];
-        
+        SelectAlbumViewController * Vc = [[SelectAlbumViewController alloc]init];
+        Vc.choseeImage = images;
+        [self.navigationController pushViewController:Vc animated:NO];
+
     }];
     [self presentViewController:picker animated:YES completion:nil];
 
@@ -206,6 +209,11 @@ static NSString * cellId = @"homeviewcellId";
 //    issue.aidstr = _aidStr;
 //    
 //    [self.navigationController pushViewController:issue animated:NO];
+    SelectAlbumViewController * Vc = [[SelectAlbumViewController alloc]init];
+    Vc.choseeImage = imageArray;
+    [self.navigationController pushViewController:Vc animated:NO];
+
+    
     
 }
 
@@ -267,7 +275,7 @@ static NSString * cellId = @"homeviewcellId";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     FamilyquanModel * model = self.dataSource[indexPath.row];
+    FamilyquanModel * model = self.dataSource[indexPath.row];
     HomeviewTableViewCell  * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (indexPath.row == 0) {
         cell.topView.hidden = YES;
