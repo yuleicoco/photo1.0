@@ -14,6 +14,10 @@
 #import "NewAlbumModel.h"
 #import "NewAlbumAdviceModel.h"
 #import "PhotoGrapgModel.h"
+#import "NewmessageModel.h"
+#import "MyDevicesModel.h"
+#import "MyfamilymemberModel.h"
+
 @interface AFHttpClient : AFHTTPSessionManager
 
 singleton_interface(AFHttpClient)

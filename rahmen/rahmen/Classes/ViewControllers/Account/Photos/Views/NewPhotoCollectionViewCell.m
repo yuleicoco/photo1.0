@@ -13,6 +13,8 @@
     self =[super initWithFrame:frame];
     if (self) {
         _backImage = [[UIImageView alloc]initWithFrame:self.bounds];
+       //  _backImage.layer.masksToBounds = YES;
+       // _backImage.contentMode = UIViewContentModeCenter;
         [self addSubview:_backImage];
         
         _mengcengView = [[UIImageView alloc]initWithFrame:self.bounds];

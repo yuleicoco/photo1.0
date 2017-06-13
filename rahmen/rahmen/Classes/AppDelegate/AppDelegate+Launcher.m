@@ -24,12 +24,11 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:NotificationLoginStateChange object:nil];
-//    
+//
+    
     [self checkLogin];
     //状态栏修改颜色
-   // [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 - (void)checkLogin{
     if ([AccountManager sharedAccountManager].isLogin) {

@@ -20,5 +20,6 @@
 
 @property (nonatomic, strong) NSArray *list;
 
+@property (nonatomic ,assign)int totalrecords;
 
 @end
