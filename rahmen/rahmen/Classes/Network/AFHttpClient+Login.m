@@ -104,6 +104,114 @@
     
 }
 
+-(void)modifyNicknameWithUserid:(NSString *)userid nickname:(NSString *)nickname complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"userid"] = userid;
+    params[@"token"] = @"";
+    params[@"objective"] = @"user";
+    params[@"action"] = @"modifyNickname";
+    //data里面传的东西
+    NSMutableDictionary * dataParams = [[NSMutableDictionary alloc]init];
+    dataParams[@"userid"] = userid;
+    dataParams[@"nickname"] = nickname;
+    params[@"data"] = dataParams;
+    
+    [self POST:@"sebot/moblie/forward" parameters:params result:^(BaseModel *model) {
+        if (model) {
+            completeBlock(model);
+        }
+        NSLog(@"%@",model);
+    }];
+
+    
+
+}
+
+-(void)modifyHeadportraitWithUserid:(NSString *)userid image:(NSString *)image complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"userid"] = userid;
+    params[@"token"] = @"";
+    params[@"objective"] = @"user";
+    params[@"action"] = @"modifyHeadportrait";
+    //data里面传的东西
+    NSMutableDictionary * dataParams = [[NSMutableDictionary alloc]init];
+    dataParams[@"userid"] = userid;
+    dataParams[@"images"] = image;
+    params[@"data"] = dataParams;
+    
+    [self POST:@"sebot/moblie/forward" parameters:params result:^(BaseModel *model) {
+        if (model) {
+            completeBlock(model);
+        }
+        NSLog(@"%@",model);
+    }];
+
+
+}
+
+
+-(void)modifyPasswordWithUserid:(NSString *)userid oldpassword:(NSString *)oldpassword newpassword:(NSString *)newpassword complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"userid"] = userid;
+    params[@"token"] = @"";
+    params[@"objective"] = @"user";
+    params[@"action"] = @"modifyPassword";
+    //data里面传的东西
+    NSMutableDictionary * dataParams = [[NSMutableDictionary alloc]init];
+    dataParams[@"userid"] = userid;
+    dataParams[@"oldpassword"] = oldpassword;
+    dataParams[@"newpassword"] = newpassword;
+    params[@"data"] = dataParams;
+    
+    [self POST:@"sebot/moblie/forward" parameters:params result:^(BaseModel *model) {
+        if (model) {
+            completeBlock(model);
+        }
+        NSLog(@"%@",model);
+    }];
+
+}
+
+
+-(void)queryUserWithUserid:(NSString *)userid complete:(void (^)(BaseModel *))completeBlock{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    params[@"userid"] = userid;
+    params[@"token"] = @"";
+    params[@"objective"] = @"user";
+    params[@"action"] = @"queryUser";
+    //data里面传的东西
+    NSMutableDictionary * dataParams = [[NSMutableDictionary alloc]init];
+    dataParams[@"userid"] = userid;
+    params[@"data"] = dataParams;
+    
+    [self POST:@"sebot/moblie/forward" parameters:params result:^(BaseModel *model) {
+        if (model) {
+            completeBlock(model);
+        }
+        NSLog(@"%@",model);
+    }];
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

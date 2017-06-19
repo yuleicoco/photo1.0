@@ -9,7 +9,7 @@
 #import "BaseJSONModel.h"
 
 @interface NewmessageModel : BaseJSONModel
-@property (nonatomic, copy) NSString *Brid;
+@property (nonatomic, copy) NSString *brid;
 @property (nonatomic, copy) NSString *deviceno;
 @property (nonatomic, copy) NSString *headportrat;
 @property (nonatomic, copy) NSString *nickname;

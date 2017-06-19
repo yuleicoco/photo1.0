@@ -300,7 +300,6 @@ static NSString * cellId = @"RegiestTableViewCellId";
             make.centerY.equalTo(cell.leftImage.superview);
             //make.width.height.mas_equalTo(16);
             
-            
         }];
     
     }

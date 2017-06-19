@@ -31,6 +31,7 @@
 #import "UIButton+Blocks.h"
 #import "UITableView+SDAutoTableViewCellHeight.h"
 #import <CoreTelephony/CTCallCenter.h>
-
+#import "SephoneManager.h"
+#include "sephone/sephonecore.h"
 
 #endif /* PrefixHeader_pch */

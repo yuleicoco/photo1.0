@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-//#import "UITabBar+Badge.h"
-//#import "AFHttpClient+Friend.h"
+#import "UITabBar+Badge.h"
+#import "AFHttpClient+Devices.h"
 @implementation BaseViewController
 
 - (void)viewDidLoad{
@@ -62,7 +62,7 @@
             self.edgesForExtendedLayout = UIRectEdgeAll;
        // }
     }else{
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.edgesForExtendedLayout = UIRectEdgeAll;
     
     }
     [self setLeftBackButton];
@@ -87,7 +87,39 @@
 //        
 //        
 //    }];
+    if ([AppUtil isBlankString:[AccountManager sharedAccountManager].loginModel.userid]) {
+        return;
+    }
+    
+    [[AFHttpClient sharedAFHttpClient]getNewMsgNumWithUserid:[AccountManager sharedAccountManager].loginModel.userid complete:^(BaseModel *model) {
+        if (model) {
+            if ([model.retVal[@"device"] isEqualToString:@"0"] && [model.retVal[@"received"] isEqualToString:@"0"] && [model.retVal[@"sent"] isEqualToString:@"0"]) {
+                NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+                [Defaults setObject:model.retVal[@"received"] forKey:@"receivedMessage"];
+                [Defaults setObject:model.retVal[@"sent"] forKey:@"sentMessage"];
+                
+                [Defaults synchronize];
+                [self.tabBarController.tabBar hideBadgeOnItemIndex:2];
+    
+            }else{
+                NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+                [Defaults setObject:model.retVal[@"received"] forKey:@"receivedMessage"];
+                [Defaults setObject:model.retVal[@"sent"] forKey:@"sentMessage"];
+                
+                 [Defaults synchronize];
 
+                [self.tabBarController.tabBar showBadgeOnItemIndex:2];
+            
+            }
+            
+            
+            
+            
+            
+            
+        }
+        
+    }];
 
 
 

@@ -13,6 +13,8 @@
 @property (nonatomic,strong)UILabel * lineLabel;
 @property (nonatomic,strong)UILabel * devicenameLabel;
 @property (nonatomic,strong)UIImageView * rightImage;
+//小红点
+@property (nonatomic,strong)UIImageView * hongImage;
 
 
 @end

@@ -59,26 +59,100 @@ singleton_implementation(AFHttpClient)
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         BaseModel* model = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-        
+    
+        //根据每一个不同的retcode或者retdesc来写提示
         if ([model.retCode isEqualToString:@"SUCCESS"]) {
-            
+             // [[AppUtil appTopViewController] showHint:@"SUCCESS"];
             if (result) {
                 result(model);
             }
-        }else{
+        }
+        
+        if ([model.retCode isEqualToString:@"FAIL"]) {
+           //  [[AppUtil appTopViewController] showHint:@""];
             
-            [[AppUtil appTopViewController] showHint:model.retDesc];
-           // [[NSNotificationCenter defaultCenter]postNotificationName:@"haha" object:nil];
-            
+            if (result) {
+                result(nil);
+            }
+        }
+        
+        
+        
+        if ([model.retCode isEqualToString:@"D001"]){
+            [[AppUtil appTopViewController] showHint:@"设备已经被绑定"];
 
             if (result) {
                 result(nil);
             }
         }
+        
+        if ([model.retCode isEqualToString:@"D002"]){
+            [[AppUtil appTopViewController] showHint:@"设备不存在"];
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D004"]){
+            [[AppUtil appTopViewController] showHint:@"此用户已是家庭成员"];
+  
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D005"]){
+            [[AppUtil appTopViewController] showHint:@"此用户不存在"];
+    
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D007"]){
+            [[AppUtil appTopViewController] showHint:@"已拒绝"];
 
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D008"]){
+            [[AppUtil appTopViewController] showHint:@"已同意"];
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D009"]){
+            [[AppUtil appTopViewController] showHint:@"您不是管理员不可移除用户"];
+
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D010"]){
+            [[AppUtil appTopViewController] showHint:@" 您不是管理员不可转让权限"];
+
+            if (result) {
+                result(nil);
+            }
+        }
+        if ([model.retCode isEqualToString:@"D011"]){
+            [[AppUtil appTopViewController] showHint:@"管理员不可解绑"];
+
+            if (result) {
+                result(nil);
+            }
+        }
+        
+        
+        
+        
+    
+        
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
+        [[AppUtil appTopViewController] showHint:@"Network Faild"];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        
         
         if (result) {
             result(nil);

@@ -19,42 +19,74 @@
 static NSString * cellId = @"DeviceViewTableViewCellId";
 @interface DeviceViewController ()
 @property (nonatomic,assign)BOOL isAdd;
+@property (nonatomic,assign)BOOL issaomiao;
 @property (nonatomic,strong)UIButton * bigBtn;
 @property (nonatomic,strong)UIView * centerView;
 @property (nonatomic,strong)UITextField * numBerTextField;
 
+@property (nonatomic,strong)UIImageView * receivedHongdian;
+@property (nonatomic,strong)UIImageView * sentHongdian;
 @end
 
 @implementation DeviceViewController
 //
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    [self shuashuju];
-//}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self shuashuju];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dada12:) name:@"saomiaojieguo" object:nil];
+    
+ 
+    
+}
+
+-(void)dada12:(NSNotification *)nsnotification{
+  //   [self bangdingView];
+    NSString * str = nsnotification.object;
+    _numBerTextField.text = str;
+//    _isAdd = YES;
+    _issaomiao = NO;
+
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"Devices"];
     self.view.backgroundColor =BACKGRAY_COLOR;
     _isAdd = NO;
+    _issaomiao = NO;
     [self showBarButton:NAV_RIGHT title:@"Add" fontColor:ZIYELLOW_COLOR hide:NO];
 }
 -(void)doRightButtonTouch{
-//    SaomaoViewController * saomoVC =[[SaomaoViewController alloc]initWithNibName:@"SaomaoViewController" bundle:nil];
-//    [self.navigationController pushViewController:saomoVC animated:YES];
+
     if (_isAdd == YES) {
         return;
     }
+    [self bangdingView];
+
+}
+
+-(void)bangdingView{
     _isAdd= YES;
-    _bigBtn = [[UIButton alloc]initWithFrame:self.view.frame];
+    if (!_bigBtn) {
+         _bigBtn = [[UIButton alloc]init];
+    }
+   
     _bigBtn.backgroundColor = [UIColor blackColor];
     _bigBtn.alpha = 0.4;
-    [[UIApplication sharedApplication].keyWindow addSubview:_bigBtn];
+    [self.view addSubview:_bigBtn];
+    [_bigBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(_bigBtn.superview);
+        
+    }];
     
-    _centerView = [[UIView alloc]init];
+    if (!_centerView) {
+         _centerView = [[UIView alloc]init];
+    }
     _centerView.backgroundColor = [UIColor whiteColor];
     _centerView.layer.cornerRadius = 4;
-    [[UIApplication sharedApplication].keyWindow addSubview:_centerView];
+    [self.view addSubview:_centerView];
     [_centerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_centerView.superview.mas_centerX);
         make.centerY.equalTo(_centerView.superview.mas_centerY);
@@ -85,6 +117,7 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     UIButton * saomiaoBtn = [[UIButton alloc]init];
     [saomiaoBtn setImage:[UIImage imageNamed:@"somiao.png"] forState:UIControlStateNormal];
     [_centerView addSubview:saomiaoBtn];
+    [saomiaoBtn addTarget:self action:@selector(saomiaoButtonTouch) forControlEvents:UIControlEventTouchUpInside];
     [saomiaoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(saomiaoBtn.superview.mas_right).offset(-23 * W_Wide_Zoom);
         make.top.equalTo(saomiaoBtn.superview.mas_top).offset(20 * W_Hight_Zoom);
@@ -96,7 +129,7 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     _numBerTextField.layer.cornerRadius = 4;
     _numBerTextField.textColor = [UIColor blackColor];
     _numBerTextField.font = [UIFont systemFontOfSize:15];
-   // _numBerTextField.placeholder = @"请输入设备号";
+    // _numBerTextField.placeholder = @"请输入设备号";
     _numBerTextField.tintColor = ZIYELLOW_COLOR;
     [_centerView addSubview:_numBerTextField];
     [_numBerTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -134,6 +167,7 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     cancelBtn.titleLabel.font = [UIFont systemFontOfSize:17.5];
     cancelBtn.backgroundColor = [UIColor whiteColor];
+    [cancelBtn addTarget:self action:@selector(xiaoshidianji) forControlEvents:UIControlEventTouchUpInside];
     [_centerView addSubview:cancelBtn];
     [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(cancelBtn.superview.mas_left);
@@ -142,11 +176,60 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
         make.bottom.equalTo(cancelBtn.superview.mas_bottom);
     }];
     
+    UIButton * saveBtn = [[UIButton alloc]init];
+    [saveBtn setTitle:@"Save" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:ZIYELLOW_COLOR forState:UIControlStateNormal];
+    saveBtn.titleLabel.font = [UIFont systemFontOfSize:17.5];
+    saveBtn.backgroundColor = [UIColor whiteColor];
+    [saveBtn addTarget:self action:@selector(saveBtntouch) forControlEvents:UIControlEventTouchUpInside];
+    [_centerView addSubview:saveBtn];
+    [saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(saveBtn.superview.mas_right);
+        make.left.equalTo(shuLabel.mas_right);
+        make.top.equalTo(lineLabel.mas_bottom);
+        make.bottom.equalTo(saveBtn.superview.mas_bottom);
+    }];
+
+}
+
+-(void)saveBtntouch{
+ 
+    if ([AppUtil isBlankString:_numBerTextField.text]) {
+        [[AppUtil appTopViewController]showHint:@"请输入设备号"];
+        return;
+    }
+    [[AFHttpClient sharedAFHttpClient]requestBindingWithUserid:[AccountManager sharedAccountManager].loginModel.userid deviceno:_numBerTextField.text complete:^(BaseModel *model) {
+        if (model) {
+            
+           // [[AppUtil appTopViewController]showHint:model.retDesc];
+            [self xiaoshidianji];
+        }
+        
+    }];
     
     
     
     
-    
+}
+
+
+-(void)xiaoshidianji{
+//    _bigBtn.hidden = YES;
+//    _centerView.hidden = YES;
+//   ;
+    [_bigBtn removeFromSuperview];
+    [_centerView removeFromSuperview];
+    _isAdd = NO;
+}
+
+
+
+
+-(void)saomiaoButtonTouch{
+   // [self xiaoshidianji];
+    _issaomiao = YES;
+    SaomaoViewController * saomoVC =[[SaomaoViewController alloc]initWithNibName:@"SaomaoViewController" bundle:nil];
+    [self.navigationController pushViewController:saomoVC animated:YES];
     
 
 }
@@ -154,9 +237,30 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
 
 
 
-
 -(void)setupView{
     [super setupView];
+    
+    
+}
+
+//-(void)setupData{
+//    [super setupData];
+//   
+//     [self.dataSource removeAllObjects];
+//    [[AFHttpClient sharedAFHttpClient]queryUserDeviceInfoWithUserid:[AccountManager sharedAccountManager].loginModel.userid complete:^(BaseModel *model) {
+//        if (model) {
+//            if (model.list.count <= 0 ) {
+//                //这里要做没有数据的处理
+//            }
+//            [self.dataSource addObjectsFromArray:model.list];
+//            // [self.tableView reloadData];
+//            [self initViewwss];
+//        }
+//    }];
+//    
+//}
+
+-(void)initViewwss{
     UIView * topView = [[UIView alloc]init];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
@@ -189,7 +293,7 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     [sentBtn addTarget:self action:@selector(sentBtntouch) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:sentBtn];
     [sentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.bottom.left.right.equalTo(sentBtn.superview);
+        make.bottom.left.right.equalTo(sentBtn.superview);
         make.height.mas_equalTo(50);
     }];
     
@@ -210,7 +314,7 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     [receiveLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(receivedBtn.mas_centerY);
         make.left.equalTo(receiveImage.mas_right).offset(16);
-
+        
     }];
     
     UIImageView * rightjian1 = [[UIImageView alloc]init];
@@ -255,6 +359,43 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
         
     }];
     
+    _receivedHongdian =[[UIImageView alloc]init];
+    _receivedHongdian.backgroundColor = [UIColor redColor];
+    _receivedHongdian.layer.cornerRadius = 3;
+    [topView addSubview:_receivedHongdian];
+    [_receivedHongdian mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_receivedHongdian.superview.mas_right).offset(-30);
+        make.centerY.equalTo(receivedBtn.mas_centerY);
+        make.width.height.mas_equalTo(6);
+        
+    }];
+    
+    _sentHongdian = [[UIImageView alloc]init];
+    _sentHongdian.backgroundColor = [UIColor redColor];
+    _sentHongdian.layer.cornerRadius = 3;
+    [topView addSubview:_sentHongdian];
+    [_sentHongdian mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_sentHongdian.superview.mas_right).offset(-30);
+        make.centerY.equalTo(sentBtn.mas_centerY);
+        make.width.height.mas_equalTo(6);
+        
+    }];
+    NSUserDefaults * receiveuserdefaults = [NSUserDefaults standardUserDefaults];
+    NSString * receiveMessagestr = [receiveuserdefaults objectForKey:@"receivedMessage"];
+    NSString * setMessagestr = [receiveuserdefaults objectForKey:@"sentMessage"];
+    if ([receiveMessagestr isEqualToString:@"0"]) {
+        _receivedHongdian.hidden = YES;
+    }else{
+        _receivedHongdian.hidden = NO;
+    }
+    
+    if ([setMessagestr isEqualToString:@"0"]) {
+        _sentHongdian.hidden = YES;
+    }else{
+        _sentHongdian.hidden = NO;
+    }
+    
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topView.mas_bottom).offset(4);
         make.left.right.equalTo(self.tableView.superview);
@@ -264,45 +405,29 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     self.tableView.backgroundColor = BACKGRAY_COLOR;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    
-    
+
+
 }
 
--(void)setupData{
-    [super setupData];
-   
-     [self.dataSource removeAllObjects];
-    [[AFHttpClient sharedAFHttpClient]queryUserDeviceInfoWithUserid:[AccountManager sharedAccountManager].loginModel.userid complete:^(BaseModel *model) {
-        if (model) {
-            if (model.list.count <= 0 ) {
-                //这里要做没有数据的处理
+
+
+-(void)shuashuju{
+        [self.dataSource removeAllObjects];
+        [[AFHttpClient sharedAFHttpClient]queryUserDeviceInfoWithUserid:[AccountManager sharedAccountManager].loginModel.userid complete:^(BaseModel *model) {
+            if (model) {
+                if (model.list.count <= 0 ) {
+                    //这里要做没有数据的处理
+                }else{
+                [self.dataSource removeAllObjects];
+                [self.dataSource addObjectsFromArray:model.list];
+                [self initViewwss];
+                    [self.tableView reloadData];
+                
+                }
             }
-            [self.dataSource addObjectsFromArray:model.list];
-            [self.tableView reloadData];
-
-        }
-    }];
-
-
-    
+        }];
     
 }
-
-//-(void)shuashuju{
-//
-//     [self.dataSource removeAllObjects];
-//    [[AFHttpClient sharedAFHttpClient]queryUserDeviceInfoWithUserid:[AccountManager sharedAccountManager].loginModel.userid complete:^(BaseModel *model) {
-//        if (model) {
-//            if (model.list.count <= 0 ) {
-//                //这里要做没有数据的处理
-//            }
-//            [self.dataSource addObjectsFromArray:model.list];
-//            [self.tableView reloadData];
-//            
-//        }
-//    }];
-//    
-//}
 
 
 
@@ -328,12 +453,13 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+     DeviceViewTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (self.dataSource.count <=0) {
-        return nil;
+        return cell;
     
-    }
+    }else{
     MyDevicesModel * model = self.dataSource[indexPath.row];
-    DeviceViewTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+   
     if (indexPath.row == 0) {
         cell.lineLabel.hidden = YES;
     }else{
@@ -341,11 +467,19 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
     }
     cell.devicenameLabel.text  = model.deviceremark;
     //后面还有小红点
+    if ([model.newvideos isEqualToString:@"0"]) {
+        cell.hongImage.hidden = YES;
+    }else{
+        cell.hongImage.hidden = NO;
+    }
+    
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
+    
+    }
 }
 
 
@@ -388,11 +522,17 @@ static NSString * cellId = @"DeviceViewTableViewCellId";
 
 
 -(void)viewDidDisappear:(BOOL)animated{
-    _bigBtn.hidden = YES;
-    _centerView.hidden = YES;
-    _isAdd = NO;
+    [super viewDidDisappear:animated];
+  //  [self xiaoshidianji];
+    if (_issaomiao == NO) {
+        [self xiaoshidianji];
+    }else{
+    
+    }
 
 }
+
+
 
 
 

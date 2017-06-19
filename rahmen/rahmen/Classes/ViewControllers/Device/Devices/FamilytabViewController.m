@@ -15,6 +15,10 @@ static NSString * cellId = @"FamilyTableViewCellIddddd";
 @interface FamilytabViewController ()
 @property (nonatomic,assign)BOOL isguanli;
 
+@property (nonatomic,strong)UIButton * bigBtn;
+@property (nonatomic,strong)UIView * centerView;
+@property (nonatomic,strong)UITextField * numBerTextField;
+@property (nonatomic,assign)BOOL isAdd;
 @end
 
 @implementation FamilytabViewController
@@ -23,6 +27,7 @@ static NSString * cellId = @"FamilyTableViewCellIddddd";
     [super viewDidLoad];
     [self setNavTitle:@"Family"];
     _isguanli = NO;
+    _isAdd = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
 }
@@ -82,8 +87,10 @@ static NSString * cellId = @"FamilyTableViewCellIddddd";
         cell.rightImage.hidden = NO;
         if (![model.userid isEqualToString:[AccountManager sharedAccountManager].loginModel.userid]) {
             _isguanli = NO;
+             [self showBarButton:NAV_RIGHT title:@"Add" fontColor:ZIYELLOW_COLOR hide:YES];
         }else{
             _isguanli = YES;
+            [self showBarButton:NAV_RIGHT title:@"Add" fontColor:ZIYELLOW_COLOR hide:NO];
         }
     }else{
         cell.lineLabel.hidden = NO;
@@ -100,7 +107,146 @@ static NSString * cellId = @"FamilyTableViewCellIddddd";
     return cell;
 }
 
+-(void)doRightButtonTouch{
+    if (_isAdd == YES) {
+        return;
+    }
+    [self bangdingView];
+    
+}
 
+-(void)bangdingView{
+    _isAdd= YES;
+    if (!_bigBtn) {
+        _bigBtn = [[UIButton alloc]init];
+    }
+    
+    _bigBtn.backgroundColor = [UIColor blackColor];
+    _bigBtn.alpha = 0.4;
+    [self.view addSubview:_bigBtn];
+    [_bigBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(_bigBtn.superview);
+        
+    }];
+    
+    if (!_centerView) {
+        _centerView = [[UIView alloc]init];
+    }
+    _centerView.backgroundColor = [UIColor whiteColor];
+    _centerView.layer.cornerRadius = 4;
+    [self.view addSubview:_centerView];
+    [_centerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_centerView.superview.mas_centerX);
+        make.centerY.equalTo(_centerView.superview.mas_centerY);
+        make.width.mas_equalTo(275 * W_Wide_Zoom);
+        make.height.mas_equalTo(175 * W_Hight_Zoom);
+    }];
+    
+    UILabel * addLabel = [[UILabel alloc]init];
+    addLabel.text = @"Add device";
+    addLabel.textColor = [UIColor blackColor];
+    addLabel.font = [UIFont systemFontOfSize:17.5];
+    [_centerView addSubview:addLabel];
+    [addLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo (addLabel.superview.mas_centerX);
+        make.top.equalTo(addLabel.superview.mas_top).offset(17 *W_Hight_Zoom);
+    }];
+    
+    UILabel * enterLabel = [[UILabel alloc]init];
+    enterLabel.text = @"Enter device ID";
+    enterLabel.font = [UIFont systemFontOfSize:17.5];
+    enterLabel.textColor = [UIColor blackColor];
+    [_centerView addSubview:enterLabel];
+    [enterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(enterLabel.superview.mas_centerX);
+        make.top.equalTo(addLabel.mas_bottom).offset(13 * W_Hight_Zoom);
+    }];
+    
+    _numBerTextField = [[UITextField alloc]init];
+    _numBerTextField.backgroundColor = RGB(240, 240, 240);
+    _numBerTextField.layer.cornerRadius = 4;
+    _numBerTextField.textColor = [UIColor blackColor];
+    _numBerTextField.font = [UIFont systemFontOfSize:15];
+    // _numBerTextField.placeholder = @"请输入设备号";
+    _numBerTextField.tintColor = ZIYELLOW_COLOR;
+    [_centerView addSubview:_numBerTextField];
+    [_numBerTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_numBerTextField.superview.mas_centerX);
+        make.top.equalTo(enterLabel.mas_bottom).offset(12 * W_Hight_Zoom);
+        make.width.mas_equalTo(220 * W_Wide_Zoom);
+        make.height.mas_equalTo(35 * W_Hight_Zoom);
+        
+    }];
+    
+    UILabel * lineLabel = [[UILabel alloc]init];
+    lineLabel.backgroundColor = FENLINE_COLOR;
+    [_centerView addSubview:lineLabel];
+    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(lineLabel.superview);
+        make.bottom.equalTo(lineLabel.superview.mas_bottom).offset(-45 * W_Hight_Zoom);
+        make.height.mas_equalTo(0.5);
+        
+    }];
+    
+    UILabel * shuLabel = [[UILabel alloc]init];
+    shuLabel.backgroundColor = FENLINE_COLOR;
+    [_centerView addSubview:shuLabel];
+    [shuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(shuLabel.superview.mas_centerX);
+        make.width.mas_equalTo(0.5);
+        make.bottom.equalTo(shuLabel.superview);
+        make.top.equalTo(lineLabel.mas_bottom);
+        
+    }];
+    
+    
+    UIButton * cancelBtn = [[UIButton alloc]init];
+    [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:17.5];
+    cancelBtn.backgroundColor = [UIColor whiteColor];
+    [cancelBtn addTarget:self action:@selector(xiaoshidianji) forControlEvents:UIControlEventTouchUpInside];
+    [_centerView addSubview:cancelBtn];
+    [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(cancelBtn.superview.mas_left);
+        make.right.equalTo(shuLabel.mas_left);
+        make.top.equalTo(lineLabel.mas_bottom);
+        make.bottom.equalTo(cancelBtn.superview.mas_bottom);
+    }];
+    
+    UIButton * saveBtn = [[UIButton alloc]init];
+    [saveBtn setTitle:@"Save" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:ZIYELLOW_COLOR forState:UIControlStateNormal];
+    saveBtn.titleLabel.font = [UIFont systemFontOfSize:17.5];
+    saveBtn.backgroundColor = [UIColor whiteColor];
+    [saveBtn addTarget:self action:@selector(saveBtntouch) forControlEvents:UIControlEventTouchUpInside];
+    [_centerView addSubview:saveBtn];
+    [saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(saveBtn.superview.mas_right);
+        make.left.equalTo(shuLabel.mas_right);
+        make.top.equalTo(lineLabel.mas_bottom);
+        make.bottom.equalTo(saveBtn.superview.mas_bottom);
+    }];
+    
+}
+
+-(void)saveBtntouch{
+        [[AFHttpClient sharedAFHttpClient]inviteRequestWithUserid:[AccountManager sharedAccountManager].loginModel.userid phone:_numBerTextField.text deviceno:_devinoStr complete:^(BaseModel *model) {
+            if (model) {
+                [self xiaoshidianji];
+            }
+        }];
+    
+}
+
+-(void)xiaoshidianji{
+    //    _bigBtn.hidden = YES;
+    //    _centerView.hidden = YES;
+    //   ;
+    [_bigBtn removeFromSuperview];
+    [_centerView removeFromSuperview];
+    _isAdd = NO;
+}
 
 
 

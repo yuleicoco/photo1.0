@@ -39,6 +39,7 @@ static NSString * cellId = @"MessageTableViewCellId2";
 -(void)loadDataSourceWithPage:(int)page{
     [[AFHttpClient sharedAFHttpClient]getNewMsgWithUserid:[AccountManager sharedAccountManager].loginModel.userid type:@"sent" page:[NSString stringWithFormat:@"%d",page] complete:^(BaseModel *model) {
         if (model) {
+            [self isReadmessage];
             if (page == START_PAGE_INDEX) {
                 if (model.list.count == 0) {
                     //  [self noShuju];
@@ -63,6 +64,19 @@ static NSString * cellId = @"MessageTableViewCellId2";
     
 
 }
+
+
+
+-(void)isReadmessage{
+    [[AFHttpClient sharedAFHttpClient]setNewMsgIsReadWithUserid:[AccountManager sharedAccountManager].loginModel.userid type:@"sent" complete:^(BaseModel *model) {
+        if (model) {
+            
+        }
+    }];
+    
+}
+
+
 
 
 -(void)setupData{

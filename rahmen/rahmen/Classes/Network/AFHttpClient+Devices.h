@@ -33,6 +33,29 @@
 //像设备发送视频
 -(void)sendVideoWithUserid:(NSString *)userid did:(NSString *)did content:(NSString *)content video:(NSString *)video complete:(void(^)(BaseModel *model))completeBlock;
 
+//用户请求绑定
+-(void)requestBindingWithUserid:(NSString *)userid deviceno:(NSString *)deviceno complete:(void(^)(BaseModel *model))completeBlock;
+
+//用户响应绑定
+-(void)sendResponseWithUserid:(NSString *)userid brid:(NSString *)brid operate:(NSString *)operate type:(NSString *)type complete:(void(^)(BaseModel *model))completeBlock;
+
+//解除绑定
+-(void)unbundlingWithUserid:(NSString *)userid did:(NSString *)did complete:(void(^)(BaseModel *model))completeBlock;
+
+//管理员邀请绑定
+-(void)inviteRequestWithUserid:(NSString *)userid phone:(NSString *)phone deviceno:(NSString *)deviceno complete:(void(^)(BaseModel *model))completeBlock;
+
+//小红点消息数量
+-(void)getNewMsgNumWithUserid:(NSString *)userid complete:(void(^)(BaseModel *model))completeBlock;
+
+//更新消息阅读状态
+-(void)setNewMsgIsReadWithUserid:(NSString *)userid type:(NSString *)type complete:(void(^)(BaseModel *model))completeBlock;
+
+//更新视频消息阅读状态
+-(void)setVideoIsReadWithUserid:(NSString *)userid did:(NSString *)did complete:(void(^)(BaseModel *model))completeBlock;
+
+//修改设备备注名
+-(void)modifyDeviceRemarkWithUserid:(NSString *)userid did:(NSString *)did remark:(NSString *)remark complete:(void(^)(BaseModel *model))completeBlock;
 
 
 

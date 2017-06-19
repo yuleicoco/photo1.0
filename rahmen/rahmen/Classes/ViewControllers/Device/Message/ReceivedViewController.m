@@ -44,6 +44,7 @@ static NSString * cellId = @"MessageTableViewCellId1";
     
     [[AFHttpClient sharedAFHttpClient]getNewMsgWithUserid:[AccountManager sharedAccountManager].loginModel.userid type:@"received" page:[NSString stringWithFormat:@"%d",page] complete:^(BaseModel *model) {
         if (model) {
+            [self isReadmessage];
             if (page == START_PAGE_INDEX) {
                 if (model.list.count == 0) {
                     //  [self noShuju];
@@ -60,6 +61,7 @@ static NSString * cellId = @"MessageTableViewCellId1";
                 self.tableView.mj_footer.hidden = NO;
             }
             [self.tableView reloadData];
+            
         }
         
         [self handleEndRefresh];
@@ -67,13 +69,18 @@ static NSString * cellId = @"MessageTableViewCellId1";
         
         
     }];
+}
 
-
-
-
-
+-(void)isReadmessage{
+    [[AFHttpClient sharedAFHttpClient]setNewMsgIsReadWithUserid:[AccountManager sharedAccountManager].loginModel.userid type:@"received" complete:^(BaseModel *model) {
+        if (model) {
+            
+        }
+    }];
 
 }
+
+
 
 
 -(void)setupData{
@@ -129,16 +136,60 @@ static NSString * cellId = @"MessageTableViewCellId1";
         cell.rightLabel.hidden = YES;
         //cell.rightLabel.text = @"Rejected";
     }
+    cell.rejectBtn.tag = indexPath.row + 210;
+    [cell.rejectBtn addTarget:self action:@selector(rejectButtontouch:) forControlEvents:UIControlEventTouchUpInside];
     
-
-    
-    
-    
+    cell.AcceptBtn.tag = indexPath.row + 220;
+    [cell.AcceptBtn addTarget:self action:@selector(acceptButtontouch:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+-(void)rejectButtontouch:(UIButton *)sender{
+     NSInteger i =sender.tag - 210;
+    NewmessageModel * model = self.dataSource[i];
+    NSString * str = model.type;
+    
+    [[AFHttpClient sharedAFHttpClient]sendResponseWithUserid:[AccountManager sharedAccountManager].loginModel.userid brid:model.brid operate:@"0" type:str complete:^(BaseModel *model) {
+        if ([model.retCode isEqualToString:@"SUCCESS"]) {
+            [self initRefreshView];
+            [[AppUtil appTopViewController]showHint:@"SUCCESS"];
+        }
+        
+    }];
+
+}
+
+-(void)acceptButtontouch:(UIButton *)sender{
+    NSInteger i = sender.tag - 220;
+    NewmessageModel * model = self.dataSource[i];
+    NSString * str = model.type;
+    
+    [[AFHttpClient sharedAFHttpClient]sendResponseWithUserid:[AccountManager sharedAccountManager].loginModel.userid brid:model.brid operate:@"1" type:str complete:^(BaseModel *model) {
+        if ([model.retCode isEqualToString:@"SUCCESS"]) {
+            [self initRefreshView];
+            [[AppUtil appTopViewController]showHint:@"SUCCESS"];
+        }
+
+    }];
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

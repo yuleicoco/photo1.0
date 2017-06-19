@@ -13,5 +13,6 @@
 @property (nonatomic,strong)UILabel * leftlabel;
 @property (nonatomic,strong)UILabel * rightLabel;
 @property (nonatomic,strong)UIImageView * rightImage;
+@property (nonatomic,strong)UIImageView * hongdianImage;
 
 @end

@@ -57,7 +57,7 @@ static NSString * cellId = @"homeviewcellId";
     [self.view addSubview:_pushjiaBtn];
     [_pushjiaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(45);
-        make.bottom.equalTo(_pushjiaBtn.superview.mas_bottom).offset(-20);
+        make.bottom.equalTo(_pushjiaBtn.superview.mas_bottom).offset(-62);
         make.centerX.equalTo(_pushjiaBtn.superview.mas_centerX);
         
     }];

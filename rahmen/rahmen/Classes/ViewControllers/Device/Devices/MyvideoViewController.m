@@ -44,6 +44,7 @@ static NSString * cellId = @"MyvideoTableViewCellId";
 -(void)loadDataSourceWithPage:(int)page{
     [[AFHttpClient sharedAFHttpClient]queryVideosByDidWithUserid:[AccountManager sharedAccountManager].loginModel.userid did:_didStr page:[NSString stringWithFormat:@"%d",page] complete:^(BaseModel *model) {
         if (model) {
+            [self isReadmessage];
             if (page == START_PAGE_INDEX) {
                 if (model.list.count == 0) {
                     //  [self noShuju];
@@ -68,7 +69,14 @@ static NSString * cellId = @"MyvideoTableViewCellId";
 
 
 }
-
+-(void)isReadmessage{
+    [[AFHttpClient sharedAFHttpClient]setVideoIsReadWithUserid:[AccountManager sharedAccountManager].loginModel.userid did:_didStr complete:^(BaseModel *model) {
+        if (model) {
+            
+        }
+    }];
+    
+}
 
 
 

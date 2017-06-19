@@ -10,4 +10,5 @@
 
 @interface FamilytabViewController : BaseTabViewController
 @property (nonatomic,strong)NSString * didStr;
+@property (nonatomic,strong)NSString * devinoStr;
 @end

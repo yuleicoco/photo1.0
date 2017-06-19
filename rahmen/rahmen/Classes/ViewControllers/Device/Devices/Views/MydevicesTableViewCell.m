@@ -53,7 +53,16 @@
             
         }];
         
-        
+        _hongdianImage = [[UIImageView alloc]init];
+        _hongdianImage.backgroundColor = [UIColor redColor];
+        _hongdianImage.layer.cornerRadius = 3;
+        [self addSubview:_hongdianImage];
+        [_hongdianImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_hongdianImage.superview.mas_right).offset(-30);
+            make.centerY.equalTo(_hongdianImage.superview.mas_centerY);
+            make.width.height.mas_equalTo(6);
+            
+        }];
         
         
         

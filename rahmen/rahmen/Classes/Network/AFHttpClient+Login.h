@@ -19,6 +19,21 @@
 //忘记密码
 -(void)forgetPasswordWithPhone:(NSString *)phone password:(NSString *)password complete:(void(^)(BaseModel *model))completeBlock;
 
+//修改昵称
+-(void)modifyNicknameWithUserid:(NSString *)userid nickname:(NSString *)nickname complete:(void(^)(BaseModel *model))completeBlock;
+
+//修改头像
+-(void)modifyHeadportraitWithUserid:(NSString *)userid image:(NSString *)image complete:(void(^)(BaseModel *model))completeBlock;
+
+//修改密码
+-(void)modifyPasswordWithUserid:(NSString *)userid oldpassword:(NSString *)oldpassword newpassword:(NSString *)newpassword complete:(void(^)(BaseModel *model))completeBlock;
+
+//查询用户信息
+-(void)queryUserWithUserid:(NSString *)userid complete:(void(^)(BaseModel *model))completeBlock;
+
+
+
+
 
 
 @end

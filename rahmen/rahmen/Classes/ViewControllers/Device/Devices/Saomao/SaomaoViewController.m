@@ -162,10 +162,11 @@
     [self isPureInt:result];
     
     if ([self isPureInt:result]) {
-        NSUserDefaults * userdefaults =[NSUserDefaults standardUserDefaults];
-        [userdefaults setValue:result forKey:@"s_m_text"];
-        [userdefaults synchronize];
+//        NSUserDefaults * userdefaults =[NSUserDefaults standardUserDefaults];
+//        [userdefaults setValue:result forKey:@"s_m_text"];
+//        [userdefaults synchronize];
         [self.navigationController popViewControllerAnimated:YES];
+           [[NSNotificationCenter defaultCenter]postNotificationName:@"saomiaojieguo" object:result];
         _lastResut = YES;
 
     }else
@@ -174,6 +175,7 @@
         [[AppUtil appTopViewController]showHint:@"不是设备号 请重新扫码"];
         _lastResut = NO;
          [self.navigationController popViewControllerAnimated:YES];
+        
         
     }
    }

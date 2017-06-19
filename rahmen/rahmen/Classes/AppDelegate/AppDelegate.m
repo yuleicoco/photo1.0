@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppDelegate+Launcher.h"
-
+#import "AppDelegate+Sephone.h"
 @interface AppDelegate ()
 
 @end
@@ -24,6 +24,8 @@
     //启动逻辑 
     [self launcherApplication:application didFinishLaunchingWithOptions:launchOptions];
     
+    [self initSephoneVoip:application didFinishLaunchingWithOptions:launchOptions];
+
     
     return YES;
 }
